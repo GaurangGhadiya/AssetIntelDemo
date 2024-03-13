@@ -18,7 +18,7 @@ const TextEditor = () => {
   
     const refElement = useRef(null);
     useEffect(() => {
-        let localItem = localStorage.getItem("editorContext");
+        let localItem = localStorage.getItem("data");
         if (localItem) {
           const context = convertFromRaw(JSON.parse(localItem));
           setEditorState(EditorState.createWithContent(context));
@@ -29,7 +29,7 @@ const TextEditor = () => {
         e.preventDefault();
         e.stopPropagation();
         localStorage.setItem(
-          "editorContext",
+          "data",
           JSON.stringify(convertToRaw(editorState.getCurrentContent()))
         );
       };
@@ -109,7 +109,7 @@ const TextEditor = () => {
     <div className="NavContainer">
         <div></div>
         <h2 className="TextTitle">Demo editor by Gaurang Ghadiya</h2>
-        <button onClick={saveTextHandler} className="Button">Save Text</button>
+        <button onClick={saveTextHandler} className="Button">Save</button>
       </div>
       <div
         onClick={() => {
